@@ -1,0 +1,25 @@
+<form class="container" ngNativeValidate #form="ngForm">
+    <header>
+        Login
+    </header>
+    <main>
+        <input #username="ngModel" class="item" type="text" placeholder="username" name="username"
+            [(ngModel)]="credentials.username" required title="Please enter username">
+        <div  *ngIf="username.invalid && (username.dirty || username.touched)">
+            <div *ngIf="username.errors" class="error">
+                Username is required.
+            </div>
+        </div>
+        <br>
+        <input #password="ngModel" class="item" type="text" placeholder="password" name="password"
+            [(ngModel)]="credentials.password" required title="Please enter password">
+        <div  *ngIf="password.invalid && (password.dirty || password.touched)">
+            <div *ngIf="password.errors" class="error">
+                Password is required.
+            </div>
+        </div>
+    </main>
+    <footer>
+        <button type="submit" [disabled]="!form.valid" (click)="test()">Next</button>
+    </footer>
+</form>
